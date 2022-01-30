@@ -28,7 +28,7 @@ exec_ins cells ins pc = do
 
 exec_file :: Handle -> Map Int Int -> IO ()
 exec_file h cells = do
-    ins <- fmap (map parse_ln . lines) $ hGetContents h
+    ins <- map parse_ln . lines <$> hGetContents h
     putStrLn $ "Parsed instructions: " ++ (show ins)
 
     putStrLn ""
